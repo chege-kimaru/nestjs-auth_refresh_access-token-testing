@@ -11,7 +11,7 @@ stages:
 
 check:
   stage: check
-  image: registry.gitlab.com/freterium/freterium-docker-images:ops
+  image: registry.gitlab.com/freterium/freterium-docker-images:danger
   script:
     - danger ci --failOnErrors
   only:
