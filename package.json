@@ -1,0 +1,13 @@
+{
+  "name": "api-v3",
+  "version": "1.0.0",
+  "description": "Freterium Api V3",
+  "main": "index.js",
+  "repository": "git@gitlab.com:freterium/api-v3.git",
+  "author": "dev@freterium.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "danger": "^11.0.2"
+  }
+}
