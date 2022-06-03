@@ -4,7 +4,7 @@ const modified_files = danger.git.modified_files.join("- ")
 message("Changed Files in this MR: \n - " + modified_files)
 
 const title_regex = /^\#[a-zA-Z0-9]{7}/g
-const cu_branch_regex = /^(.*)\/CU-[a-z0-9]{7}_(.*)/g
+const cu_branch_regex = /^(.*)\/CU-[a-z0-9]{7}(.*)/g
 const force_regex = /\bCU-FORCE\b/g;
 const develop_branch_regex = /^develop/g;
 
@@ -25,11 +25,13 @@ if (!is_force) {
         if (!danger.gitlab.mr.squash) {
             fail("Develop only: \"Squash commits\" setting must be enabled")
         }
-        if (!danger.gitlab.mr.title.match(title_regex)) {
-            fail("Develop only: The title of the merge request must start with the Clickup task ID, format #1234567")
-        }
-        if (!danger.gitlab.mr.source_branch.match(cu_branch_regex)) {
-            fail("Develop only: The source branch must be in the Clickup, format user/CU-1234567_Task-Description")
+        const has_cu_id =
+            danger.gitlab.mr.title.match(title_regex) ||
+            danger.gitlab.mr.source_branch.match(cu_branch_regex);
+
+        if (!has_cu_id) {
+            // @see https://docs.clickup.com/en/articles/2221930-gitlab
+            fail("Develop only: Clickup task id must be in MR title or in branch name in one of the formats: #{task_id}, CU-{task_id}")
         }
     }
 }
