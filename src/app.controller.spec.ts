@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return { message: "FRETERIUM API" }', () => {
-      expect(appController.home()).toBe({ message: 'FRETERIUM API' });
+    it('should return { message: "FRETERIUM API UP" }', () => {
+      expect(appController.getApiStatus()).toBe({ message: 'FRETERIUM API UP' });
     });
   });
 });

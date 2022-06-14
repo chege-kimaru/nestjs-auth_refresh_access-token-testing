@@ -6,6 +6,7 @@ export const setupOpenApiDoc = (app: INestApplication) => {
         .setTitle('Freterium')
         .setDescription('Freterium API')
         .setVersion('1.0')
+        .addBearerAuth()
         .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, document);
