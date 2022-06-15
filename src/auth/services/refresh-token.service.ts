@@ -4,9 +4,9 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '~/users/entities/user.entity';
-import { RefreshToken } from './entities/refresh-token.entity';
 import * as ms from 'ms';
 import { TokenExpiredError } from 'jsonwebtoken';
+import { RefreshToken } from '../entities/refresh-token.entity';
 
 export interface RefreshTokenPayload {
     jti: string;

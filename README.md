@@ -34,6 +34,8 @@ DB_HOST=localhost npm run migration:run
   ```
   npm run migration:run
   ```
+- ### Docs
+  Once application has successfully started, open `http://localhost:3000` to view open api docs.
 
 ## Basic Nestjs Commands
 ### Installation
