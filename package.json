@@ -97,10 +97,7 @@
       "^~/(.*)$": "<rootDir>/../src/$1"
     },
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node",
-    "_moduleAliases": {
-      "~": "src"
-    }
+    "testEnvironment": "node"
   },
   "pnpm": {
     "peerDependencyRules": {
