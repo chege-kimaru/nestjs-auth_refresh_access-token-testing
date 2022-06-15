@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { compare } from 'bcrypt';
@@ -64,7 +64,7 @@ export class AuthService {
     findUserByCredentials(username: string): Promise<User | null> {
         return this.userRepository.findOne({
             where: { username },
-            select: ['username', 'password']
+            select: ['id', 'username', 'password']
         });
     }
 }

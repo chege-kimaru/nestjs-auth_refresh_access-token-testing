@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Column, Entity, Table } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany } from "typeorm";
+import { Role } from "~/access-control/entities/role.entity";
 import { SharedEntity } from "~/shared/entities/shared.entity";
 
 @Entity('users')
@@ -27,4 +28,18 @@ export class User extends SharedEntity {
     @ApiProperty()
     @Column({ nullable: false })
     mobile: string;
+
+    @ManyToMany(() => Role, role => role.users)
+    @JoinTable({
+        name: "user_roles",
+        joinColumn: {
+            name: "user_id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "role_id",
+            referencedColumnName: "id"
+        }
+    })
+    roles: Role[];
 }

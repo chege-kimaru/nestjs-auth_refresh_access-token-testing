@@ -1,13 +1,12 @@
 import { Body, Controller, Get, HttpCode, Post, Request, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from '~/users/entities/user.entity';
 import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/current-user.decorator';
 import { Public } from './decorators/public.decorator';
 import { LoginResponseDto } from './dto/login-response.dto';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @ApiTags('Auth')
@@ -50,7 +49,7 @@ export class AuthController {
     @ApiBearerAuth()
     @ApiResponse({ type: User, status: 200 })
     @Get('profile')
-    getProfile(@Request() req): User {
-        return req.user;
+    getProfile(@CurrentUser() user: User): User {
+        return user;
     }
 }
