@@ -21,8 +21,8 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @HttpCode(200)
     @Post('login')
-    login(@Request() req): Promise<LoginResponseDto> {
-        return this.authService.login(req.user);
+    login(@CurrentUser() user: User): Promise<LoginResponseDto> {
+        return this.authService.login(user);
     }
 
     @ApiOperation({ summary: 'Refresh Token' })

@@ -43,6 +43,7 @@ describe('UsersService', () => {
 
       jest.spyOn(service, 'findUserByUsername').mockResolvedValue(null);
       jest.spyOn(bcrypt, 'hash');
+      jest.spyOn(userRepositoryMock, 'save').mockReturnValue(new User());
       jest.spyOn(service, 'findUserById');
 
       await service.createUser(dto);
