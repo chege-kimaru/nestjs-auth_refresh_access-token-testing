@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 
 describe('AppController', () => {
   let appController: AppController;
+  let appService: AppService;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -12,11 +13,12 @@ describe('AppController', () => {
     }).compile();
 
     appController = app.get<AppController>(AppController);
+    appService = app.get<AppService>(AppService);
   });
 
   describe('root', () => {
-    it('should return { message: "FRETERIUM API" }', () => {
-      expect(appController.home()).toBe({ message: 'FRETERIUM API' });
+    it('should return { message: "FRETERIUM API UP" } on getApiStatus()', () => {
+      expect(appController.getApiStatus()).toEqual({ message: 'FRETERIUM API UP' });
     });
   });
 });

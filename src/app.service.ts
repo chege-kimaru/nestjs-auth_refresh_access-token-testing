@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
-  getHome(): { message: string } {
-    return { message: 'FRETERIUM API' };
+  getApiStatus(): { message: string } {
+    return { message: 'FRETERIUM API UP' };
   }
 }

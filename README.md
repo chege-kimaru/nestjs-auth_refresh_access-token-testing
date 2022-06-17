@@ -15,6 +15,11 @@
   ```
   npm run migration:revert
   ```
+
+  - **Note:** To run migrations locally that is outside docker container, change your `DB_HOST` env variable to `localhost`. Eg on Unix:
+```
+DB_HOST=localhost npm run migration:run
+```
 - ### Docker
   - To start the application:
   ```
@@ -29,14 +34,12 @@
   ```
   npm run migration:run
   ```
+- ### Docs
+  Once application has successfully started, open `http://localhost:3000` to view open api docs.
 
 ## Basic Nestjs Commands
 ### Installation
 - **Note**: To speed up packages installation, especially on docker with node:16, we are using **pnpm** instead of **npm**
-- Install single package
-```bash
-$ pnpm add pkg
-```
 - Install packages
 ```bash
 $ pnpm install
